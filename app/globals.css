@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #FAFAF7;
+  color: #12151C;
+}
+
+html.dark body {
+  background-color: #12151C;
+  color: #FAFAF7;
+}
+
+/* Signature element: the "price ticket" — a perforated-edge tag used for
+   prices and deal badges throughout the storefront, evoking a physical
+   price tag rather than a generic pill/badge. */
+.price-ticket {
+  position: relative;
+  font-family: var(--font-plex-mono), monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.6rem 0.15rem 0.9rem;
+  background: #12151C;
+  color: #FAFAF7;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.price-ticket::before {
+  content: "";
+  position: absolute;
+  left: -0.4rem;
+  top: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: inherit;
+  transform: translateY(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+
+.price-ticket::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  background: #FAFAF7;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+html.dark .price-ticket::after {
+  background: #12151C;
+}
+
+.price-ticket.on-sale {
+  background: #C98F24;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #0F6659;
+  outline-offset: 2px;
+}
